@@ -1,26 +1,21 @@
-import fetch from 'node-fetch';
 import QRCode from 'qrcode';
-import fs from 'fs';
 
-// Step 1: Fetch UUID from an API
-async function getUUID() {
-  const response = await fetch('https://httpbin.org/uuid');
-  const data = await response.json();
-  return data.uuid;
-}
-
-// Step 2: Generate QR code and save to file
-async function generateAndSaveQR(uuid) {
+export async function generateUserQr(uuid) {
   try {
-    console.log('Fetched UUID:', uuid);
-
-    const qrFilePath = 'uuid_qr.png';
+    const qrFilePath = 'user_qr.png'; // or use dynamic file naming
     await QRCode.toFile(qrFilePath, uuid);
-
-    console.log(`QR Code saved as ${qrFilePath}`);
+    console.log(`User QR Code saved as ${qrFilePath}`);
   } catch (error) {
-    console.error('Error:', error);
+    console.error('Error generating user QR code:', error);
   }
 }
 
-export default generateAndSaveQR;
+export async function generateTicketQr(data) {
+  try {
+    const qrFilePath = 'ticket_qr.png';
+    await QRCode.toFile(qrFilePath, data);
+    console.log(`Ticket QR Code saved as ${qrFilePath}`);
+  } catch (error) {
+    console.error('Error generating ticket QR code:', error);
+  }
+}

@@ -6,7 +6,8 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import { v4 as uuidv4 } from 'uuid';
 import User from './models/User.js'; // add .js if you're using ESM
-import generateAndSaveQR from './qr-creation.js';
+import { generateUserQr, generateTicketQr } from './qr-creation.js';
+import bodyParser from 'body-parser';
 
 
 
@@ -21,6 +22,8 @@ mongoose.connect(MONGO_URI, {
 
 
 const app = express();
+app.use(bodyParser.json()); 
+
 
 app.use(cors({
   origin: 'http://localhost:8080',
@@ -45,7 +48,7 @@ app.use(passport.session());
 app.get('/api/user', (req, res) => {
     
   if(req.user){
-    generateAndSaveQR(req.user.uuid)
+    generateUserQr(req.user.uuid)
     const uuid = req.user.uuid
     console.log(uuid)
   }
@@ -89,6 +92,27 @@ passport.use(new GoogleStrategy({
   }
 }));
 
+
+app.post('/api/book', async (req, res) => {
+  const { user_uuid, ticket_uuid } = req.body;
+
+  if (!user_uuid || !ticket_uuid) {
+    return res.status(400).json({ error: 'Missing UUIDs' });
+  }
+
+  const payload = {
+    user_uuid,
+    ticket_uuid
+  };
+
+  try {
+    await generateTicketQr(JSON.stringify(payload));
+    res.status(200).json({ message: 'QR code generated successfully' });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to generate QR code' });
+  }
+});
 
 
 app.get('/auth/google',
