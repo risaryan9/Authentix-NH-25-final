@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import BlogPost from "@/components/BlogPost";
 import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import TicketBooking from "./TIcketBooking";
 
 const Blog = () => {
   // Scroll to top on page load
@@ -23,8 +22,10 @@ const Blog = () => {
       author: "Technical Crew",
       category: "Sound",
       imageSrc: "/lovable-uploads/8dced82a-6a2c-48ee-a060-463c28764183.png",
-      featured: true
+      featured: true,
+      price: "900"
     },
+    
   ];
   
   const categories = [
@@ -98,7 +99,14 @@ const Blog = () => {
         <div className="max-w-7xl mx-auto">
           {filteredPosts.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <TicketBooking />
+              {filteredPosts.map((post, index) => (
+                <BlogPost
+                  key={post.id}
+                  {...post}
+                  className={`animate-fade-in ${post.featured ? "md:col-span-2" : ""}`}
+                  style={{ animationDelay: `${index * 100}ms` }}
+                />
+              ))}
             </div>
           ) : (
             <div className="text-center py-16">
