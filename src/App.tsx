@@ -16,6 +16,7 @@ import Footer from "./components/Footer";
 import Login from "./pages/login";
 import Payment from "./pages/payments";
 import TransactionComplete from "./pages/TransactionComplete";
+import Profile from "./pages/Profile";
 
 const queryClient = new QueryClient();
 
@@ -38,6 +39,7 @@ const App = () => (
             <Route path="/payments" element={<Payment />} />
             <Route path="/login" element={<Login />} />
             <Route path="/TransactionComplete" element={<TransactionComplete />} />
+            <Route path="/Profile" element={<Profile />} />
             
           </Routes>
         </main>
