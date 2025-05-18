@@ -12,10 +12,10 @@ export async function generateUserQr(uuid) {
 
 export async function generateTicketQr(data) {
   try {
-    const qrFilePath = 'ticket_qr.png';
-    await QRCode.toFile(qrFilePath, data);
-    console.log(`Ticket QR Code saved as ${qrFilePath}`);
+    const qrDataUrl = await QRCode.toDataURL(data);
+    return qrDataUrl;
   } catch (error) {
     console.error('Error generating ticket QR code:', error);
+    throw error;
   }
 }

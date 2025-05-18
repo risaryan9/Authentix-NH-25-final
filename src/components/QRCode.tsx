@@ -6,15 +6,39 @@ import { Card, CardContent } from "@/components/ui/card";
 const QRCode = () => {
   const [qrVisible, setQrVisible] = useState(false);
   const [isGenerating, setIsGenerating] = useState(false);
+  const [qrSrc, setQrSrc] = useState("");
 
-  const generateQR = () => {
-    setIsGenerating(true);
-    // Simulate API call delay
-    setTimeout(() => {
+const generateQR = async () => {
+  setIsGenerating(true);
+
+  try {
+    const res = await fetch("http://localhost:3000/api/book", {
+      method: "POST",
+      credentials: "include", // 🔥 include session cookie
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({}) // 🔥 no need to send UUIDs
+    });
+
+    const result = await res.json();
+
+    if (!res.ok) {
+      throw new Error(JSON.stringify(result));
+    }
+
+    if (result.qrDataUrl) {
+      setQrSrc(result.qrDataUrl);
       setQrVisible(true);
-      setIsGenerating(false);
-    }, 800);
-  };
+    } else {
+      throw new Error("No QR code returned.");
+    }
+  } catch (err) {
+    console.error("QR generation error:", err);
+  } finally {
+    setIsGenerating(false);
+  }
+};
 
   return (
     <div className="mt-8">
@@ -33,11 +57,9 @@ const QRCode = () => {
             <CardContent className="pt-6">
               <div className="flex justify-center">
                 <div className="bg-white p-4 rounded-xl">
-                  <img 
-                    src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=PSK_Services_Transaction_${Date.now()}`} 
-                    alt="Transaction QR Code"
-                    className="w-48 h-48" 
-                  />
+                  {qrVisible && qrSrc && (
+                    <img src={qrSrc} alt="Transaction QR Code" className="w-48 h-48" />
+                  )}
                 </div>
               </div>
               <p className="text-center mt-4 text-sm text-gray-300">

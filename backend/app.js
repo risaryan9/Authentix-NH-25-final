@@ -94,20 +94,25 @@ passport.use(new GoogleStrategy({
 
 
 app.post('/api/book', async (req, res) => {
-  const { user_uuid, ticket_uuid } = req.body;
-
-  if (!user_uuid || !ticket_uuid) {
-    return res.status(400).json({ error: 'Missing UUIDs' });
+  // Ensure user is authenticated
+  if (!req.isAuthenticated || !req.isAuthenticated()) {
+    return res.status(401).json({ error: 'Unauthorized: User not logged in' });
   }
 
-  const payload = {
-    user_uuid,
-    ticket_uuid
-  };
+  const user_uuid = req.user?.uuid;
+
+  if (!user_uuid) {
+    return res.status(400).json({ error: 'Missing user UUID' });
+  }
+
+  // Generate a ticket UUID
+  const ticket_uuid = crypto.randomUUID(); // Always generate on backend
+
+  const payload = { user_uuid, ticket_uuid };
 
   try {
-    await generateTicketQr(JSON.stringify(payload));
-    res.status(200).json({ message: 'QR code generated successfully' });
+    const qrDataUrl = await generateTicketQr(JSON.stringify(payload));
+    res.status(200).json({ qrDataUrl, user_uuid, ticket_uuid }); // optionally return uuids
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Failed to generate QR code' });
