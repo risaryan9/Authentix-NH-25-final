@@ -1,5 +1,6 @@
 import React from "react";
 import { CheckCircle } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import { useForm } from "react-hook-form";
@@ -10,6 +11,7 @@ import CryptoOption from "./CryptoOption";
 
 const PaymentForm = () => {
   const [paymentMethod, setPaymentMethod] = React.useState<string>("credit");
+  const navigate = useNavigate();
 
   const form = useForm({
     defaultValues: {
@@ -26,7 +28,8 @@ const PaymentForm = () => {
   const onSubmit = (data: any) => {
     console.log("Payment data submitted:", data);
     console.log("Payment method used:", data.paymentType);
-    // Here you would integrate with actual payment processors
+    // Redirect to transaction complete page
+    navigate("/TransactionComplete");
   };
 
   // Handle payment method change and update the form value

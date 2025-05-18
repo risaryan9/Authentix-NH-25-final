@@ -6,7 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 
-import Blog from "./pages/explore";
+import Explore from "./pages/explore";
 import BlogDetail from "./pages/BlogDetail";
 import References from "./pages/about";
 import Booking from "./pages/contact";
@@ -15,6 +15,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Login from "./pages/login";
 import Payment from "./pages/payments";
+import TransactionComplete from "./pages/TransactionComplete";
 
 const queryClient = new QueryClient();
 
@@ -29,14 +30,15 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             
-            <Route path="/blog" element={<Blog />} />
+            <Route path="/explore" element={<Explore />} />
             <Route path="/blog/:id" element={<BlogDetail />} />
             <Route path="/references" element={<References />} />
             <Route path="/booking" element={<Booking />} />
             <Route path="*" element={<NotFound />} />
             <Route path="/payments" element={<Payment />} />
             <Route path="/login" element={<Login />} />
-            r
+            <Route path="/TransactionComplete" element={<TransactionComplete />} />
+            
           </Routes>
         </main>
         <Footer />
