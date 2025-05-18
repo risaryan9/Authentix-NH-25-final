@@ -177,9 +177,7 @@ const Profile = () => {
               <p className="text-center mb-6">
                 This QR code contains your unique user ID and can be scanned at our facilities.
               </p>
-              <div className="user-qr-container">
-                <UserQRCode userId={userData.userId} userName={userData.name} />
-              </div>
+              <img src="backend\user_qr.png" alt="Transaction QR Code" />
             </CardContent>
           </Card>
         </TabsContent>
