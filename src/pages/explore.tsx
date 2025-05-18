@@ -15,15 +15,15 @@ const Blog = () => {
   const blogPosts = [
     {
       id: "tentacular-urutz",
-      title: "PA Rental & Live Sets on Tentacular Urutz Party, Italy",
-      excerpt: "Our team provided a custom sound system and technical support for the underground psychedelic trance event in Italy, featuring our signature horn-loaded setup.",
-      date: "April 8, 2023",
+      title: "Coldplay Mumbai Concert",
+      excerpt: "Our team provided a custom sound system and technical support for the Coldplay concert in Mumbai, featuring our signature horn-loaded setup.",
+      date: "March 15, 2026",
       readTime: "6 min read",
       author: "Technical Crew",
-      category: "Sound",
-      imageSrc: "/lovable-uploads/8dced82a-6a2c-48ee-a060-463c28764183.png",
+      category: "Concerts",
+      imageSrc: "https://i.ytimg.com/vi/Fpn1imb9qZg/maxresdefault.jpg",
       featured: true,
-      price: "900"
+      price: "4000 INR (exclusive of taxes)",
     },
     
   ];

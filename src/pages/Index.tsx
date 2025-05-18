@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import HeroSection from "@/components/HeroSection";
-import ServiceCard from "@/components/ServiceCard";
+
 import { Link } from "react-router-dom";
 import { Volume2, Music2, Lightbulb, PartyPopper, MoveRight, CalendarDays } from "lucide-react";
 
@@ -37,33 +37,6 @@ const Index = () => {
   return (
     <div>
       <HeroSection />
-      
-      {/* Services Section */}
-      <section className="py-20 px-6 md:px-12">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-12">
-            <div>
-              <h2 className="text-3xl font-bold text-white mb-2">Our Services</h2>
-              <p className="text-gray-400 max-w-2xl">
-                Seamless ticketing, government ID verification, and anti-resale technology to protect your event and your audience.
-              </p>
-            </div>
-            
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {featuredServices.map((service, index) => (
-              <ServiceCard
-                key={index}
-                {...service}
-                className="animate-fade-in"
-                style={{ animationDelay: `${index * 100}ms` }}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
-      
       {/* Event Types Section */}
       <section className="py-20 px-6 md:px-12 bg-psyco-black-light">
         <div className="max-w-7xl mx-auto">
