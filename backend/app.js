@@ -20,11 +20,13 @@ mongoose.connect(MONGO_URI, {
   .catch(err => console.error('MongoDB connection error:', err));
 
 
-
+//Express App declared
 const app = express();
+
+//BodyParser middleware to recieve and respond to requests
 app.use(bodyParser.json()); 
 
-
+//Cors to sahre information between backend and the frontend
 app.use(cors({
   origin: 'http://localhost:8080',
   credentials: true
@@ -44,7 +46,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-
+//Returns the user details and the user QR
 app.get('/api/user', (req, res) => {
     
   if(req.user){
@@ -93,6 +95,7 @@ passport.use(new GoogleStrategy({
 }));
 
 
+//Starts the oAuth 2.0 process
 app.post('/api/book', async (req, res) => {
   // Ensure user is authenticated
   if (!req.isAuthenticated || !req.isAuthenticated()) {
@@ -108,6 +111,7 @@ app.post('/api/book', async (req, res) => {
   // Generate a ticket UUID
   const ticket_uuid = crypto.randomUUID(); // Always generate on backend
 
+  // Payload defind to genearte the dynamic QR from the Blockchain
   const payload = { user_uuid, ticket_uuid };
 
   try {
@@ -124,6 +128,7 @@ app.get('/auth/google',
   passport.authenticate('google', { scope: ['profile', 'email'] })
 );
 
+// Callback function over successfull or failure of OAuth process
 app.get('/auth/google/callback',
   passport.authenticate('google', { failureRedirect: '/' }),
   (req, res) => {
@@ -137,6 +142,7 @@ app.get('/profile', (req, res) => {
   res.redirect("http://localhost:8080/")
 });
 
+// Function for logging out 
 app.get('/logout', (req, res, next) => {
   req.logout(function(err) {
     if (err) { return next(err); }

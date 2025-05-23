@@ -1,5 +1,7 @@
 import QRCode from 'qrcode';
 
+
+//Generate the user QR from the given DigiLocker Details
 export async function generateUserQr(uuid) {
   try {
     const qrFilePath = 'user_qr.png'; // or use dynamic file naming
@@ -10,6 +12,8 @@ export async function generateUserQr(uuid) {
   }
 }
 
+
+//Generates Ticket QR from given JSON file
 export async function generateTicketQr(data) {
   try {
     const qrDataUrl = await QRCode.toDataURL(data);
