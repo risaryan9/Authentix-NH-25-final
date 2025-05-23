@@ -54,10 +54,8 @@ const blogPosts = [
   
   const categories = [
     "Sports",
-    "Stand Up Comedy",
     "Concerts",
     "Festivals",
-    "Theater",
     "Technical"
   ];
   
