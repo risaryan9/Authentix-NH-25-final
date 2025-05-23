@@ -132,7 +132,7 @@ const References = () => {
 
           </div>
 
-          <div className="flex justify-center"><img src="./nmitlogo.webp" alt="" width={400} height={40}/></div>
+          <div className="flex justify-center"><img src="public\e18659a7-79b2-4dd5-95e6-eb499dc1275c.jpg" alt="" width={250} height={25}/></div>
           
           </div>
           
