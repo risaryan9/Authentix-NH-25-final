@@ -17,7 +17,7 @@ const References = () => {
     {
       
     
-      label: "Milan Sampath",
+      label: "Kuldeep Sinh Jadeja",
       
 
     },
@@ -27,11 +27,11 @@ const References = () => {
     },
     {
       
-      label: "Mohammed Talha"
+      label: "Ravindra A "
     },
     {
       
-      label: "Ashutosh Sharma"
+      label: "Avani Shetty"
     }
   ];
 
