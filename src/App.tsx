@@ -17,6 +17,8 @@ import Login from "./pages/login";
 import Payment from "./pages/payments";
 import TransactionComplete from "./pages/TransactionComplete";
 import Profile from "./pages/Profile";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfService from "./pages/TermsOfService";
 
 const queryClient = new QueryClient();
 
@@ -40,6 +42,8 @@ const App = () => (
             <Route path="/login" element={<Login />} />
             <Route path="/TransactionComplete" element={<TransactionComplete />} />
             <Route path="/Profile" element={<Profile />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms-of-service" element={<TermsOfService />} />
             
           </Routes>
         </main>
