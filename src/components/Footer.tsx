@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Mail, Phone, MapPin, Instagram, Facebook, Youtube, Linkedin } from 'lucide-react';
+import { Mail, Phone, MapPin, Instagram, Facebook, Youtube } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -21,14 +21,14 @@ const Footer = () => {
             <p className="text-gray-300 max-w-md">
               Advanced ticket authentication and verification system for concerts, events, and festivals. Designed to eliminate reselling, ensure fair access, and provide organizers with complete control. 
             </p>
-            <div className="flex space-x-4 pt-2 justify-center">
+            <div className="flex space-x-4 pt-2">
               <a 
                 href="https://linkedin/tracknow.com" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-green-400 transition-colors"
               >
-                <Linkedin size={20} />
+                <Instagram size={20} />
               </a>
              
             </div>
@@ -110,10 +110,10 @@ const Footer = () => {
             © {new Date().getFullYear()} Built by Team AuthenTIX For Nmit Hacks 2025 
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <a href="privacy-policy" className="text-gray-400 hover:text-green-400 text-sm transition-colors">
+            <a href="#" className="text-gray-400 hover:text-green-400 text-sm transition-colors">
               Privacy Policy
             </a>
-            <a href="terms-of-service" className="text-gray-400 hover:text-green-400 text-sm transition-colors">
+            <a href="#" className="text-gray-400 hover:text-green-400 text-sm transition-colors">
               Terms of Service
             </a>
           </div>

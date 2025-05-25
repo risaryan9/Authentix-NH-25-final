@@ -3,8 +3,6 @@ import HeroSection from "@/components/HeroSection";
 
 import { Link } from "react-router-dom";
 import { Volume2, Music2, Lightbulb, PartyPopper, MoveRight, CalendarDays } from "lucide-react";
-import { Icon } from 'lucide-react';
-import { football } from '@lucide/lab';
 
 const Index = () => {
   // Scroll to top on page load
@@ -54,7 +52,7 @@ const Index = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
             {[
               { name: "Concerts", icon: <Volume2 size={32} /> },
-              { name: "Sports", icon: <Icon iconNode={football} size={32} /> },
+              { name: "Sports", icon: <PartyPopper size={32} /> },
               { name: "Corporate", icon: <CalendarDays size={32} /> },
               { name: "Festivals", icon: <Music2 size={32} /> }
             ].map((event, index) => (
