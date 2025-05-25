@@ -8,7 +8,7 @@ import { v4 as uuidv4 } from 'uuid';
 import User from './models/User.js'; // add .js if you're using ESM
 import { generateUserQr, generateTicketQr } from './qr-creation.js';
 import bodyParser from 'body-parser';
-import pool from './pgClient.js';
+
 
 
 const MONGO_URI = 'mongodb://localhost:27017/users'; 
@@ -58,16 +58,6 @@ app.get('/api/user', (req, res) => {
   res.json({ user: req.user || null });
 });
 
-
-app.get('/api/blog-posts', async (req, res) => {
-  try {
-    const result = await pool.query('SELECT * FROM blog_posts ORDER BY date DESC');
-    res.json(result.rows);
-  } catch (err) {
-    console.error('Error fetching blog posts:', err);
-    res.status(500).json({ error: 'Failed to fetch blog posts' });
-  }
-});
 
 // Serialize user into the session
 passport.serializeUser((user, done) => {

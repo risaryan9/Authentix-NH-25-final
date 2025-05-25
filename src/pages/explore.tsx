@@ -12,45 +12,21 @@ const Blog = () => {
   
   const [searchTerm, setSearchTerm] = useState("");
   
-const blogPosts = [
-  {
-    id: "tentacular-urutz",
-    title: "Coldplay Mumbai Concert",
-    excerpt: "Our team provided a custom sound system and technical support for the Coldplay concert in Mumbai, featuring our signature horn-loaded setup.",
-    date: "March 15, 2026",
-    readTime: "6 min read",
-    author: "Technical Crew",
-    category: "Concerts",
-    imageSrc: "https://i.ytimg.com/vi/Fpn1imb9qZg/maxresdefault.jpg",
-    featured: true,
-    price: "4000 INR (exclusive of taxes)",
-  },
-  {
-    id: "ipl-mumbai-rcb",
-    title: "IPL 2026: Mumbai Indians vs RCB",
-    excerpt: "Watch the most thrilling IPL showdown live at Wankhede Stadium. Get your tickets now for an electrifying cricket evening.",
-    date: "April 22, 2026",
-    readTime: "4 min read",
-    author: "Sports Desk",
-    category: "Sports",
-    imageSrc: "public/453f3d8d-38f2-4f9a-970e-364cb1a1915f (1).jpg",
-    featured: false,
-    price: "1500 INR (starting)",
-  },
-  {
-    id: "oppenheimer-premiere",
-    title: "Oppenheimer - Movie Premiere",
-    excerpt: "Experience Christopher Nolan`s masterpiece in IMAX. Premiering across major cities with exclusive behind-the-scenes footage.",
-    date: "May 10, 2026",
-    readTime: "5 min read",
-    author: "Cinema Club",
-    category: "Theater",
-    imageSrc: "public/b7e93762-27bb-40c4-b039-8c03cafff4e8 (1).jpg",
-    featured: false,
-    price: "350 INR",
-  }
-];
-
+  const blogPosts = [
+    {
+      id: "tentacular-urutz",
+      title: "Coldplay Mumbai Concert",
+      excerpt: "Our team provided a custom sound system and technical support for the Coldplay concert in Mumbai, featuring our signature horn-loaded setup.",
+      date: "March 15, 2026",
+      readTime: "6 min read",
+      author: "Technical Crew",
+      category: "Concerts",
+      imageSrc: "https://i.ytimg.com/vi/Fpn1imb9qZg/maxresdefault.jpg",
+      featured: true,
+      price: "4000 INR (exclusive of taxes)",
+    },
+    
+  ];
   
   const categories = [
     "Sports",
