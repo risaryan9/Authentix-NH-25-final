@@ -107,7 +107,7 @@ const Footer = () => {
 
         <div className="border-t border-green-500/10 mt-12 pt-6 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-sm text-center md:text-left">
-            © {new Date().getFullYear()} Built by Team AuthenTIX For Nmit Hacks 2025 
+            © {new Date().getFullYear()} AuthenTIX . all rights reserved.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a href="#" className="text-gray-400 hover:text-green-400 text-sm transition-colors">
