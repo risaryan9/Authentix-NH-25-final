@@ -9,8 +9,8 @@ const CryptoOption = () => {
         <div className="space-y-4">
           <div className="flex justify-center gap-4 mb-4">
             <Bitcoin className="h-8 w-8 text-yellow-500" />
-            <img src="public\images.png" alt="Ethereum" className="h-8 w-8" />
-            <img src="public\images (1).png" alt="USDT" className="h-8 w-8" />
+            <img src="https://cryptologos.cc/logos/ethereum-eth-logo.svg?v=029" alt="Ethereum" className="h-8 w-8" />
+            <img src="https://cryptologos.cc/logos/tether-usdt-logo.svg?v=029" alt="USDT" className="h-8 w-8" />
           </div>
           <div className="text-center">
             <p className="mb-4">Pay with Bitcoin, Ethereum, or other major cryptocurrencies</p>
