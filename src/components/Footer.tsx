@@ -15,7 +15,7 @@ const Footer = () => {
                 
               </div>
               <h2 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-green-500">
-                Team AuthenTIX
+                AuthenTIX LLC 
               </h2>
             </div>
             <p className="text-gray-300 max-w-md">

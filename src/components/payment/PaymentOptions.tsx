@@ -29,7 +29,7 @@ const PaymentOptions = ({ paymentMethod, onPaymentMethodChange, form }: PaymentO
                 <RadioGroupItem value="credit" id="credit" />
                 <Label htmlFor="credit" className="flex items-center gap-2 cursor-pointer w-full">
                   <CreditCard className="h-5 w-5" />
-                  <span>Credit/Debit</span>
+                  <span>Card</span>
                 </Label>
               </div>
               
@@ -45,7 +45,7 @@ const PaymentOptions = ({ paymentMethod, onPaymentMethodChange, form }: PaymentO
                 <RadioGroupItem value="crypto" id="crypto" />
                 <Label htmlFor="crypto" className="flex items-center gap-2 cursor-pointer w-full">
                   <Bitcoin className="h-5 w-5" />
-                  <span>Cryptocurrency</span>
+                  <span className="text-sm">Crypto</span>
                 </Label>
               </div>
             </RadioGroup>
