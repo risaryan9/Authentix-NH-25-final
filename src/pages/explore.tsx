@@ -77,7 +77,7 @@ const Blog = () => {
   date: "June 13, 2025",
   author: "Lionsgate",
   category: "Movies",
-  imageSrc: "https://m.media-amazon.com/images/M/MV5BODM1OGEyNTItNWVlMi00NjAzLWFhMTEtODQ5MzU1NDdjMDY2XkEyXkFqcGdeQWFybm8@._V1_.jpg",
+  imageSrc: "https://deadline.com/wp-content/uploads/2023/03/Keanu-Reeves-john-wick-4.jpg",
   featured: false,
   price: "₹200-₹350",
 },
