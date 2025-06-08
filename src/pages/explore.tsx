@@ -168,6 +168,7 @@ const Blog = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredPosts.map((post, index) => (
                 <BlogPost
+                readTime=""
                   key={post.id}
                   {...post}
                   className={`animate-fade-in ${post.featured ? "md:col-span-2" : ""}`}

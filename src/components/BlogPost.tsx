@@ -86,7 +86,7 @@ const BlogPost = ({
         {price && (
   <div className="mt-6 flex justify-between items-center">
     <div className="text-lg text-psyco-green-light font-semibold">
-      ₹{price}
+      {price}
     </div>
     <button className="bg-psyco-green-DEFAULT hover:bg-psyco-green-dark text-white text-sm font-medium py-2 px-4 rounded-md transition-colors" onClick={() => navigate('/payments')}>
       Buy Ticket
