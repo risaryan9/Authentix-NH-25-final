@@ -8,6 +8,7 @@ import { v4 as uuidv4 } from 'uuid';
 import User from './models/User.js'; // add .js if you're using ESM
 import { generateUserQr, generateTicketQr } from './qr-creation.js';
 import bodyParser from 'body-parser';
+import Razorpay from "razorpay"
 
 
 
@@ -153,6 +154,29 @@ app.get('/logout', (req, res, next) => {
       res.redirect('http://localhost:8080'); 
     });
   });
+});
+
+
+const razorpayInstance = new Razorpay({
+  key_id: "rzp_test_3tpQ9zF45v8yE9",
+  key_secret: "C0FVo3Stz0xrAnZalAeF4Ll9",
+});
+
+app.post("/create-order", async (req, res) => {
+  const { amount } = req.body;
+
+  const options = {
+    amount: amount * 100, // in paise
+    currency: "INR",
+    receipt: "receipt_" + Date.now(),
+  };
+
+  try {
+    const order = await razorpayInstance.orders.create(options);
+    res.json(order);
+  } catch (err) {
+    res.status(500).send(err);
+  }
 });
 
 // Start server

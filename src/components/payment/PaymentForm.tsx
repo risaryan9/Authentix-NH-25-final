@@ -25,11 +25,68 @@ const PaymentForm = () => {
     },
   });
 
-  const onSubmit = (data: any) => {
-    console.log("Payment data submitted:", data);
-    console.log("Payment method used:", data.paymentType);
-    // Redirect to transaction complete page
-    navigate("/TransactionComplete");
+  const loadRazorpayScript = () => {
+    return new Promise((resolve) => {
+      if ((window as any).Razorpay) {
+        resolve(true);
+        return;
+      }
+
+      const script = document.createElement("script");
+      script.src = "https://checkout.razorpay.com/v1/checkout.js";
+      script.onload = () => resolve(true);
+      script.onerror = () => resolve(false);
+      document.body.appendChild(script);
+    });
+  };
+
+  const onSubmit = async (data: any) => {
+    if (data.paymentType === "razorpay") {
+      const res = await loadRazorpayScript();
+
+      if (!res) {
+        alert("Failed to load Razorpay SDK. Check your internet.");
+        return;
+      }
+
+      try {
+        const response = await fetch("http://localhost:3000/create-order", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ amount: 500 }), // ₹500
+        });
+
+        const order = await response.json();
+
+        const options = {
+          key: "rzp_test_3tpQ9zF45v8yE9", // Replace with your test key
+          amount: order.amount,
+          currency: order.currency,
+          name: "AuthenTIX LLC",
+          description: "Demo Payment",
+          order_id: order.id,
+          handler: function (response: any) {
+            console.log("Payment successful:", response);
+            navigate("/TransactionComplete");
+          },
+          prefill: {
+            name: "AuthenTIX",
+            email: "authentixAdmin@gmail.com",
+            contact: "9353339152",
+          },
+          theme: { color: "#528FF0" },
+        };
+
+        const rzp = new (window as any).Razorpay(options);
+        rzp.open();
+      } catch (err) {
+        console.error("Error creating Razorpay order:", err);
+      }
+    } else {
+      navigate("/TransactionComplete");
+    }
   };
 
   // Handle payment method change and update the form value
@@ -47,17 +104,16 @@ const PaymentForm = () => {
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-          <PaymentOptions 
-            paymentMethod={paymentMethod} 
-            onPaymentMethodChange={handlePaymentMethodChange} 
+          <PaymentOptions
+            paymentMethod={paymentMethod}
+            onPaymentMethodChange={handlePaymentMethodChange}
             form={form}
           />
 
           {paymentMethod === "credit" && <CreditCardForm form={form} />}
           {paymentMethod === "razorpay" && <RazorpayOption />}
           {paymentMethod === "crypto" && <CryptoOption />}
-
-          <Button 
+          <Button
             type="submit"
             className="w-full bg-psyco-green-DEFAULT hover:bg-psyco-green-dark text-white py-3 flex justify-center items-center gap-2 btn-glow"
           >
